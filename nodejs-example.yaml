@@ -78,7 +78,7 @@ objects:
           value: ${NPM_MIRROR}
         from:
           kind: ImageStreamTag
-          name: docker.io/node:${NODEJS_VERSION}
+          name: ${NAME}:latest
           #namespace: ${NAMESPACE}
       type: Source
     triggers:
