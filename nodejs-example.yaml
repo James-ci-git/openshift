@@ -25,7 +25,7 @@ objects:
 - apiVersion: v1
   kind: Secret
   metadata:
-    name: ${NAME}
+    name: ${NAME-secret}
   stringData:
     git-user: ${GIT_USER}
     git-password: ${GIT_PASSWORD}
