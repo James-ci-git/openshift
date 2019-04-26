@@ -64,7 +64,7 @@ objects:
         kind: ImageStreamTag
         name: ${NAME}:latest
     postCommit:
-      script: npm install -g cnpm --registry=${NPM_MIRROR}
+      script: npm test
     source:
       contextDir: ${CONTEXT_DIR}
       git:
