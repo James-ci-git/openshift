@@ -23,13 +23,6 @@ metadata:
   name: nodejs-dist-example
 objects:
 - apiVersion: v1
-  kind: Secret
-  metadata:
-    name: ${NAME-secret}
-  stringData:
-    git-user: ${GIT_USER}
-    git-password: ${GIT_PASSWORD}
-- apiVersion: v1
   kind: Service
   metadata:
     annotations:
@@ -114,16 +107,6 @@ objects:
         - env:
           - name: NODEJS_SERVICE_NAME
             value: ${NODEJS_SERVICE_NAME}
-          - name: GIT_USER
-            valueFrom:
-              secretKeyRef:
-                key: git-user
-                name: ${NAME}
-          - name: GIT_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                key: git-password
-                name: ${NAME}
           image: ' '
           livenessProbe:
             httpGet:
@@ -196,13 +179,3 @@ parameters:
   name: NPM_MIRROR
   required: true
   value: https://registry.npm.taobao.org
-- description: The custom git user
-  displayName: Custom git user
-  name: GIT_USER
-  required: true
-  value: xiaofg@xystack.com
-- description: The custom git-password
-  displayName: Custom git-password
-  name: GIT_PASSWORD
-  required: true
-  value: GIT_123456_pass
