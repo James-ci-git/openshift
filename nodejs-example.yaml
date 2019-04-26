@@ -78,7 +78,7 @@ objects:
           value: ${NPM_MIRROR}
         from:
           kind: ImageStreamTag
-          name: nodejs-example:${NODEJS_VERSION}
+          name: node:${NODEJS_VERSION}
           #namespace: ${NAMESPACE}
       type: Source
     triggers:
