@@ -78,7 +78,7 @@ objects:
           value: ${NPM_MIRROR}
         from:
           kind: ImageStreamTag
-          name: node:${NODEJS_VERSION}
+          name: docker.io/node:${NODEJS_VERSION}
           #namespace: ${NAMESPACE}
       type: Source
     triggers:
@@ -146,7 +146,7 @@ parameters:
   displayName: Version of NodeJS Image
   name: NODEJS_VERSION
   required: true
-  value: "8"
+  value: "10.15.3"
 - description: Maximum amount of memory the Node.js container can use.
   displayName: Memory Limit
   name: MEMORY_LIMIT
