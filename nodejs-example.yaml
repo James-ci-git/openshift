@@ -74,7 +74,7 @@ objects:
       from:
         kind: ImageStreamTag
         name: "10.15.3"
-      name: latest
+      name: "latest"
 - apiVersion: v1
   kind: BuildConfig
   metadata:
@@ -105,7 +105,7 @@ objects:
           value: ${NPM_MIRROR}
         from:
           kind: ImageStreamTag
-          name: nodejs-example:${NODEJS_VERSION}
+          name: nodejs-example:latest
       type: Source
     triggers:
     - type: ImageChange
