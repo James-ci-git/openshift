@@ -45,12 +45,40 @@ objects:
     to:
       kind: Service
       name: ${NAME}
+
 - apiVersion: v1
   kind: ImageStream
   metadata:
     annotations:
       description: Keeps track of changes in the application image
     name: ${NAME}
+  spec: {}
+  status:
+    dockerImageRepository: ""
+
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    name: node
+  spec:
+    tags:
+    - annotations:
+        supports: node:10.15.3
+        tags: builder,node
+        version: "10.15.3"
+      from:
+        kind: DockerImage
+        name: docker.io/node:10.15.3
+      name: "10.15.3"
+    - annotations:
+        supports: node
+        tags: builder,node
+      from:
+        kind: ImageStreamTag
+        name: "10.15.3"
+      name: latest
+
+
 - apiVersion: v1
   kind: BuildConfig
   metadata:
@@ -146,7 +174,7 @@ parameters:
   displayName: Version of NodeJS Image
   name: NODEJS_VERSION
   required: true
-  value: "10.15.3"
+  value: "10.1"
 - description: Maximum amount of memory the Node.js container can use.
   displayName: Memory Limit
   name: MEMORY_LIMIT
