@@ -45,7 +45,6 @@ objects:
     to:
       kind: Service
       name: ${NAME}
-
 - apiVersion: v1
   kind: ImageStream
   metadata:
@@ -55,36 +54,37 @@ objects:
   spec: {}
   status:
     dockerImageRepository: ""
-
 - apiVersion: v1
   kind: ImageStream
   metadata:
-    name: node
+    name: nodejs-example
   spec:
     tags:
     - annotations:
-        supports: node:10.15.3
-        tags: builder,node
+        supports: nodejs-example:10.15.3
+        tags: builder,nodejs-example
         version: "10.15.3"
       from:
         kind: DockerImage
         name: docker.io/node:10.15.3
       name: "10.15.3"
     - annotations:
-        supports: node
-        tags: builder,node
+        supports: nodejs-example
+        tags: builder,nodejs-example
       from:
         kind: ImageStreamTag
         name: "10.15.3"
       name: latest
-
-
 - apiVersion: v1
   kind: BuildConfig
   metadata:
     annotations:
       description: Defines how to build the application
+      openshift.io/generated-by: OpenShiftNewApp
       template.alpha.openshift.io/wait-for-ready: "true"
+    labels:
+      app: nodejs-dist-example
+      template: nodejs-dist-example
     name: ${NAME}
   spec:
     output:
@@ -94,7 +94,6 @@ objects:
     postCommit:
       script: npm install -g cnpm --registry=${NPM_MIRROR}
     source:
-      contextDir: ${CONTEXT_DIR}
       git:
         ref: ${SOURCE_REPOSITORY_REF}
         uri: ${SOURCE_REPOSITORY_URL}
@@ -106,8 +105,7 @@ objects:
           value: ${NPM_MIRROR}
         from:
           kind: ImageStreamTag
-          name: node:${NODEJS_VERSION}
-          #namespace: ${NAMESPACE}
+          name: nodejs-example:${NODEJS_VERSION}
       type: Source
     triggers:
     - type: ImageChange
