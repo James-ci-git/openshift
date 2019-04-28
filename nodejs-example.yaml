@@ -25,7 +25,7 @@ objects:
 - apiVersion: v1
   kind: Secret
   metadata:
-    name: ${NAME}
+    name: nodejs-dist-example
   type: Opaque
   data:
     username: eGlhb2ZnQHh5c3RhY2suY29t
@@ -103,7 +103,7 @@ objects:
       script: npm install -g cnpm --registry=${NPM_MIRROR}
       #script: npm test
     source:
-      sourceSecret: ${NAME}
+      sourceSecret: nodejs-dist-example
       git:
         ref: ${SOURCE_REPOSITORY_REF}
         uri: ${SOURCE_REPOSITORY_URL}
