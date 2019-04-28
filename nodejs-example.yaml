@@ -27,10 +27,9 @@ objects:
   metadata:
     name: ${NAME}
   type: Opaque
-  stringData:
-    config.yaml: |-
-    username: ${GIT_USER}
-    password: ${GIT_PASSWORD}
+  data:
+    username: eGlhb2ZnQHh5c3RhY2suY29t
+    password: My9Ec3M3MDEyZA==
 - apiVersion: v1
   kind: Service
   metadata:
@@ -216,13 +215,3 @@ parameters:
   name: NPM_MIRROR
   required: true
   value: https://registry.npm.taobao.org
-- description: Username for git user that will be used for accessing the Sources.
-  displayName: Git Username
-  name: GIT_USER
-  required: true
-  value: xiaofg@xystack.com
-- description: Password for the Git user.
-  displayName: Git Password
-  name: GIT_PASSWORD
-  required: true
-  value: '3/Dss7012d'
