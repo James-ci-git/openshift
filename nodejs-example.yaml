@@ -74,7 +74,7 @@ objects:
         version: "10.15.3"
       from:
         kind: DockerImage
-        name: registry.xystack.com/library/node:10.15.3
+        name: registry.xystack.com/library/node:10.15.4
       name: "10.15.3"
     - annotations:
         supports: nodejs-example
