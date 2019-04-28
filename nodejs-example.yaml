@@ -95,7 +95,8 @@ objects:
       script: npm install -g cnpm --registry=${NPM_MIRROR}
       #script: npm test
     source:
-      sourceSecret: nodejs-dist-sample
+      sourceSecret:
+        name: ${NAME}
       git:
         ref: ${SOURCE_REPOSITORY_REF}
         uri: ${SOURCE_REPOSITORY_URL}
