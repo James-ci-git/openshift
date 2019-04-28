@@ -74,7 +74,7 @@ objects:
         version: "10.15.3"
       from:
         kind: DockerImage
-        name: registry.xystack.com/library/node:10.15.4
+        name: registry.xystack.com/library/node:10.15.3
       name: "10.15.3"
     - annotations:
         supports: nodejs-example
@@ -100,7 +100,7 @@ objects:
         kind: ImageStreamTag
         name: ${NAME}:latest
     postCommit:
-      script: npm install -g cnpm --registry=${NPM_MIRROR} &&  cnpm install && npm run build && npm install http-server -g
+      script: cd /tmp/build/inputs && npm install -g cnpm --registry=${NPM_MIRROR} &&  cnpm install && npm run build && npm install http-server -g
       #script: npm test
     source:
       sourceSecret:
