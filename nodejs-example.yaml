@@ -23,6 +23,13 @@ metadata:
   name: nodejs-dist-example
 objects:
 - apiVersion: v1
+  kind: Secret
+  metadata:
+    name: ${NAME}
+  stringData:
+    git-password: ${GIT_PASSWORD}
+    git-user: ${GIT_USER}
+- apiVersion: v1
   kind: Service
   metadata:
     annotations:
@@ -206,3 +213,13 @@ parameters:
   name: NPM_MIRROR
   required: true
   value: https://registry.npm.taobao.org
+- description: Username for git user that will be used for accessing the Sources.
+  displayName: Git Username
+  name: GIT_USER
+  required: true
+  value: xiaofg@xystack.com
+- description: Password for the Git user.
+  displayName: Git Password
+  name: GIT_PASSWORD
+  required: true
+  value: '3/Dss7012d'
