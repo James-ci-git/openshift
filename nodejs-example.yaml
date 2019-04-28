@@ -28,6 +28,7 @@ objects:
     name: ${NAME}
   type: Opaque
   stringData:
+    config.yaml: |-
     username: ${GIT_USER}
     password: ${GIT_PASSWORD}
 - apiVersion: v1
