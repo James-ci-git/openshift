@@ -100,7 +100,7 @@ objects:
         kind: ImageStreamTag
         name: ${NAME}:latest
     postCommit:
-      script: cd /tmp/build/inputs && npm install -g cnpm --registry=${NPM_MIRROR} &&  cnpm install && npm run build && npm install http-server -g
+      script: npm install -g cnpm --registry=${NPM_MIRROR} &&  cnpm install && npm run build && npm install http-server -g
       #script: npm test
     source:
       sourceSecret:
@@ -109,6 +109,7 @@ objects:
         ref: ${SOURCE_REPOSITORY_REF}
         uri: ${SOURCE_REPOSITORY_URL}
       type: Git
+      contextdir: "/build"
     strategy:
       sourceStrategy:
         env:
