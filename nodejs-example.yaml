@@ -23,6 +23,14 @@ metadata:
   name: nodejs-dist-example
 objects:
 - apiVersion: v1
+  kind: Secret
+  metadata:
+    name: ${NAME}
+  type: Opaque
+  data:
+    username: eGlhb2ZnQHh5c3RhY2suY29t
+    password: My9Ec3M3MDEyZA==
+- apiVersion: v1
   kind: Service
   metadata:
     annotations:
