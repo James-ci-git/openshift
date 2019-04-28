@@ -26,9 +26,10 @@ objects:
   kind: Secret
   metadata:
     name: ${NAME}
+  type: Opaque
   stringData:
-    git-password: ${GIT_PASSWORD}
-    git-user: ${GIT_USER}
+    username: ${GIT_USER}
+    password: ${GIT_PASSWORD}
 - apiVersion: v1
   kind: Service
   metadata:
@@ -102,6 +103,7 @@ objects:
       script: npm install -g cnpm --registry=${NPM_MIRROR}
       #script: npm test
     source:
+      sourceSecret: ${NAME}
       git:
         ref: ${SOURCE_REPOSITORY_REF}
         uri: ${SOURCE_REPOSITORY_URL}
@@ -190,12 +192,12 @@ parameters:
   displayName: Git Repository URL
   name: SOURCE_REPOSITORY_URL
   required: true
-  value: https://github.com/sclorg/nodejs-ex.git
+  value: https://gitlab.crrcdt.com/qingxin.jiang/openshift-console.git
 - description: Set this to a branch name, tag or other ref of your repository if you are not using the default branch.
   displayName: Git Reference
   name: SOURCE_REPOSITORY_REF
   required: true
-  value: master
+  value: develop
 - description: Set this to the relative path to your project if it is not in the root of your repository.
   displayName: Context Directory
   name: CONTEXT_DIR
