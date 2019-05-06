@@ -100,8 +100,7 @@ objects:
         kind: ImageStreamTag
         name: ${NAME}:latest
     postCommit:
-      script: npm install -g cnpm --registry=${NPM_MIRROR} &&  cnpm install && npm run build && npm install http-server -g
-      #script: npm test
+      script: npm test
     source:
       sourceSecret:
         name: ${NAME}
