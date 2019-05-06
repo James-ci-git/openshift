@@ -104,11 +104,12 @@ objects:
     source:
       sourceSecret:
         name: ${NAME}
+      mountPath: "/tmp/source"
       git:
         ref: ${SOURCE_REPOSITORY_REF}
         uri: ${SOURCE_REPOSITORY_URL}
       type: Git
-      contextDir: "/tmp/source"
+      #contextDir: "/tmp/source"
     strategy:
       sourceStrategy:
         env:
